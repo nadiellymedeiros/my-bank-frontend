@@ -1,0 +1,30 @@
+.navbar {
+  width: 100%;
+  background-color: #2d2e2f;
+  color: white;
+  height: 8rem;
+  justify-content: center;
+}
+
+.btn {
+  background-color: #8357e5;
+  border: #8357e5;
+  color: white;
+}
+
+.contentNav {
+  width: 30%;
+  padding-top: 0.6rem;
+  display: flex;
+  justify-content: around;
+}
+
+i {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 520px) {
+  .contentNav {
+    width: 95%;
+  }
+}

@@ -1,0 +1,16 @@
+<app-navbar></app-navbar>
+
+<form [formGroup]="formularioDeposito">
+  <div class="bodyDeposito">
+    <div class="contentDeposito">
+      <p>Depósito</p>
+      <input
+        type="number"
+        formControlName="valorDeposito"
+        placeholder="Informe o valor do depósito"
+        class="form-control p-2"
+      />
+      <button class="btn text-white mt-4" (click)="deposito()">Depósito</button>
+    </div>
+  </div>
+</form>

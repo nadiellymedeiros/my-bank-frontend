@@ -1,0 +1,71 @@
+<div class="bodyHistory">
+  <p>Histórico</p>
+  <!-- <app-search></app-search> -->
+
+  <div class="input-group search">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"
+        ><i class="bi bi-search"></i
+      ></span>
+    </div>
+    <input
+      type="search"
+      [(ngModel)]="searchText"
+      id="formSearch1"
+      class="form-control"
+      placeholder="Busca"
+      aria-label="search"
+    />
+  </div>
+
+  <div *ngIf="historys.length > 0; else noHistory">
+    <div *ngFor="let transaction of historys | filter : searchText">
+      <div
+        *ngIf="transaction.idDonorUser === idLoggedInUser"
+        class="transictions"
+      >
+        <div *ngIf="idLoggedInUser === transaction.idDonorUser">
+          <div *ngIf="transaction.type === 'transfer'" class="transiction">
+            <p class="titleTransiction redTransiction">Transferência enviada</p>
+            <span class="contenttransactions">
+              {{ transaction.amount | currency }} para
+              {{ transaction.nameRecipientUser }} no dia
+              {{ transaction.date }}
+            </span>
+          </div>
+        </div>
+        <div *ngIf="transaction.type === 'deposit'" class="transiction">
+          <p class="titleTransiction greenTransiction">Depósito</p>
+          <span class="contenttransactions">
+            {{ transaction.amount | currency }} no dia
+            {{ transaction.date }}
+          </span>
+        </div>
+
+        <div *ngIf="transaction.type === 'withdrawal'" class="transiction">
+          <p class="titleTransiction redTransiction">Saque</p>
+          <span class="contenttransactions">
+            {{ transaction.amount | currency }} no dia
+            {{ transaction.date }}
+          </span>
+        </div>
+      </div>
+
+      <div *ngIf="transaction.idRecipientUserUser === idLoggedInUser">
+        <div *ngIf="transaction.type === 'transfer'" class="transiction">
+          <p class="titleTransiction greenTransiction">
+            Transferência recebida
+          </p>
+          <span class="contenttransactions">
+            {{ transaction.amount | currency }} de
+            {{ transaction.nameDonorUser }} no dia
+            {{ transaction.date }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noHistory>
+    <p>No transaction history available.</p>
+  </ng-template>
+</div>

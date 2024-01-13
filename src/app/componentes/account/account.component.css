@@ -1,0 +1,22 @@
+.bodyAccount {
+  width: 100%;
+  /* height: calc(100vh-4rem); */
+  background-color: #121214;
+  color: white;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+.contentAccount {
+  width: 80%;
+  /* height: 100vh; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+}
+
+.transictions {
+  /* height: 100vh; */
+}

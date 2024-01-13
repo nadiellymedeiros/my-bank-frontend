@@ -1,27 +1,54 @@
-# Frontend
+<h1 align="center"> Bank app</h1>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.3.
+<p align="center">Projeto de um banco em aplicação web utilizando Angular. Para o backend eu utilizei o json-server.</p>
 
-## Development server
+<p align="center">deploy: </p>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+# Sumário
 
-## Code scaffolding
+- [Descrição](#Descrição)
+- [Features](#Features)
+- [Tecnologias Utilizadas](#Tecnologias-Utilizadas)
+- [Autora](#Autora)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Descrição
 
-## Build
+Esse projeto foi como treinamento pessoal. Consiste em uma aplicação web de um banco. O usuário deve fazer login.
+Na home tem a navbar que o usuário pode fazer o login ou ir para o perfil e editar seu perfil, tem a parte de conta, que mostra o total disponível na conta, a parte de transações, onde o usuário pode fazer saque, depósito e transferência, e meus cartões onde mostra o cartão do usuário com seus dados. Ao clicar em contas vai para a parte onde mostra o histórico de todas as transações na conta do usuário, pode-se fazer a busca no histórico.
+Em cada página tem uma outra navbar onde o usuário pode voltar para home ou sair.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Features
 
-## Running unit tests
+### Frontend (Telas)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- [x] Navbar da home
+- [x] Navbar das páginas
+- [x] Conta
+- [x] Histórico com busca
+- [x] Transações
+- [x] Meus cartões
 
-## Running end-to-end tests
+# Tecnologias Utilizadas
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Frontend
 
-## Further help
+- HTML
+- CSS
+- Javascript
+- Angular
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Backend
+
+- JSON-server
+
+# Autora
+
+❤️ Feito com carinho e dedicação por:❤️
+
+<div ><img src="https://avatars.githubusercontent.com/u/105972020?v=4" width="100px;" alt=""/></div>
+
+<div ><a href="https://github.com/nadiellymedeiros">Nadielly Xavier</a></div>
+
+<div ><a href="https://www.linkedin.com/in/nadielly-xavier-de-medeiros/"><img src="https://img.shields.io/badge/-Nadielly-blue?style=flat-square&logo=Linkedin&logoColor=white"/></a></div>
+
+</br></br>

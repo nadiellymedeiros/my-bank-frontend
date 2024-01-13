@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<form [formGroup]="formularioProfile">
+  <div class="bodyProfile">
+    <div class="contentProfile">
+      <p>Nome: {{ name }}</p>
+      <p>E-mail: {{ email }}</p>
+      <p>Senha: {{ password }}</p>
+      <button class="btn" (click)="showEditUserProfile()">Alterar</button>
+    </div>
+
+    <div class="editProfile" [ngClass]="{ 'd-none': !showEdit }">
+      <label class="form-label">Nome</label>
+      <input type="text" formControlName="name" class="form-control p-2" />
+      <label class="form-label">E-mail</label>
+      <input type="email" formControlName="email" class="form-control p-2" />
+      <label class="form-label">Senha</label>
+      <input type="text" formControlName="password" class="form-control p-2" />
+      <div class="btnEditProfile">
+        <button class="btn mt-4" (click)="editUserProfile()">Salvar</button>
+        <button class="btn mt-4" (click)="hideEditUserProfile()">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

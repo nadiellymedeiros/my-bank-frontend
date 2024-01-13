@@ -1,0 +1,76 @@
+<nav class="navbar navbarHome">
+  <div class="contentNavHome d-flex justify-content-around">
+    <button class="btn usuarioTag btnNavHome" (click)="rotaProfile()">
+      <i class="bi bi-person-fill"></i>
+    </button>
+    <p>Bem-vindo, {{ name }}!</p>
+
+    <button class="btn btnNavHome" (click)="sair()">
+      <i class="bi bi-box-arrow-right"></i>
+    </button>
+  </div>
+</nav>
+
+<div class="bodyHome">
+  <div class="contentHome">
+    <div class="bodyAccount">
+      <div class="contentAccount">
+        <p>Conta:</p>
+        <p>R$ {{ amount }}</p>
+      </div>
+      <div>
+        <button class="go" (click)="rotaAccount()">
+          <i class="bi bi-caret-right-fill"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="contentTransaction">
+      <div class="transaction">
+        <button class="btnTransaction btn" (click)="rotaSaque()">
+          <div class="btnIconsWithdrawal">
+            <i class="bi bi-arrow-bar-up"></i>
+            <i class="bi bi-cash"></i>
+          </div>
+        </button>
+
+        <p>Saque</p>
+      </div>
+
+      <div class="transaction">
+        <button class="btnTransaction btn" (click)="rotaDeposito()">
+          <i class="bi bi-cash-coin"></i>
+        </button>
+        <p>Depósito</p>
+      </div>
+
+      <div class="transaction">
+        <button class="btnTransaction btn" (click)="rotaTransferencia()">
+          <div class="btnIconsTranfer">
+            <i class="bi bi-arrow-down-up"></i>
+            <i class="bi bi-cash"></i>
+          </div>
+        </button>
+        <p>Transferência</p>
+      </div>
+    </div>
+
+    <div class="myCards">
+      <button (click)="rotaMyCards()">Meus Cartões</button>
+    </div>
+
+    <!-- <div class="creditCard">
+      <p>Cartão de crédito</p>
+      <div class="contentCreditCard">
+        <div>
+          <p>Fatura Atual</p>
+          <p>R$ 5.000,00</p>
+        </div>
+
+        <div>
+          <button class="go">></button>
+        </div>
+      </div>
+    </div> -->
+  </div>
+</div>

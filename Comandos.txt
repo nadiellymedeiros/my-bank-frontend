@@ -1,0 +1,25 @@
+CRIAÇÃO DO PROJETO: ng new bank-frontend
+
+EXECUTAR PROJETO: ng s
+
+fiz a aula 03 sobre login...ver comandos
+
+no src cria a pasta modelos com botão direito
+
+CRIA o arquivo dentro de modelos com cada entidade e cria a classe
+
+CRIAR UM COMPONENTE: ng g c componentes/user
+
+CRIAR UM SERVIÇO: ng g s servicos/user
+
+vai no arquivo app.config e add o provideHttpClient(withFetch()) para liberar as reuisições para API
+
+no arquivo user.services.ts add construtor private http:HttpClient
+ainda no mesmo arquivo cria o método para retornar todas os usuários
+
+no arquivo app.component.html apaga a estrutura e chama o app-user. que é o selector dentro do arquivo user.component.ts
+
+importar o UserComponent no app.component.ts, import o communModule no ts desse arquivo tb
+
+no arquivo user.component.ts cria o construtor, cria o vetor de user, funcção para listar os users
+depois cria o "Ao iniciar" importar o communModule

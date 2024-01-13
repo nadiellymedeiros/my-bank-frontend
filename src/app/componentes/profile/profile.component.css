@@ -1,0 +1,34 @@
+.bodyProfile {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  background-color: #121214;
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 18px;
+}
+
+.contentProfile {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.btnEditProfile {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  background-color: #8357e5;
+  color: white;
+  width: 200px;
+}
+
+.editProfile {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}

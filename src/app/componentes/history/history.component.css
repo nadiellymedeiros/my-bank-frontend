@@ -1,0 +1,45 @@
+.bodyHistory {
+  height: 100vh;
+}
+
+.transiction {
+  margin-top: 2rem;
+  border-bottom: 1px solid #8a9197;
+}
+
+.titleTransiction {
+  font-size: 20px;
+  margin: 0.5rem;
+}
+
+.search {
+  color: white;
+}
+
+.form-control {
+  color: white;
+}
+
+.contenttransactions {
+  color: #8a9197;
+}
+
+.input-group-text i {
+  color: white;
+}
+
+.input-group-prepend span {
+  background-color: #2d2e2f;
+  border-color: #2d2e2f;
+}
+
+input {
+  background-color: #2d2e2f;
+  border-color: #2d2e2f;
+  color: white;
+}
+
+input:focus {
+  background-color: #2d2e2f;
+  color: white !important;
+}

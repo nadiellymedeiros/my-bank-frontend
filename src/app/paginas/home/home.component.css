@@ -1,0 +1,168 @@
+i {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.navbarHome {
+  width: 100%;
+  background-color: #2d2e2f;
+  color: white;
+  height: 8rem;
+  justify-content: center;
+}
+
+.btnNavHome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentNavHome {
+  width: 30%;
+  padding-top: 0.6rem;
+}
+
+.bi-person {
+  font-size: 24px;
+  color: white;
+}
+
+.btn {
+  background-color: #8357e5;
+  border: #8357e5;
+  color: white;
+}
+
+.btnTransaction,
+.navbarHome button {
+  width: 45px;
+  aspect-ratio: auto 45 / 42;
+  height: 42px;
+}
+
+.btnTransaction {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.btnIconsWithdrawal i {
+  position: absolute;
+  top: 0;
+}
+
+.btnIconsWithdrawal i:last-child {
+  position: absolute;
+  top: 12px;
+}
+
+.btnIconsTranfer i {
+  position: absolute;
+  top: 1px;
+}
+
+.btnIconsTranfer i:first-child {
+  left: 15px;
+}
+
+.btnIconsTranfer i:last-child {
+  position: absolute;
+  top: 12px;
+}
+
+.bi-arrow-down-up {
+  font-size: 15px;
+}
+
+.bodyHome {
+  width: 100%;
+  height: calc(100vh - 4rem);
+  background-color: #121214;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.contentHome {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bodyAccount {
+  width: 90%;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  /* border-bottom: solid 1px gray; */
+  padding-top: 2rem;
+}
+
+.go {
+  background-color: #8357e5;
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.transaction {
+  width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 4rem;
+}
+
+.contentTransaction {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-content: space-around;
+}
+
+.myCards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  border-bottom: solid 1px gray;
+}
+
+.myCards button {
+  width: 150px;
+  height: 4rem;
+  background-color: #8357e5;
+  border-color: #8357e5;
+  border-radius: 5px;
+  color: white;
+}
+
+.creditCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.contentCreditCard {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 520px) {
+  .contentHome {
+    width: 80%;
+  }
+  .contentNavHome {
+    width: 95%;
+  }
+}

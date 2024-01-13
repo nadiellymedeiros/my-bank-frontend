@@ -1,0 +1,15 @@
+<nav class="navbar d-flex flex-column">
+  <div class="contentNav d-flex justify-content-around">
+    <button class="btn" (click)="voltar()">
+      <i class="bi bi-house-fill"></i>
+    </button>
+    <p>Bem-vindo, {{ name }}!</p>
+    <button class="btn" (click)="sair()">
+      <i class="bi bi-box-arrow-right"></i>
+    </button>
+  </div>
+
+  <div>
+    <p>Saldo disponível: R$ {{ amount }}</p>
+  </div>
+</nav>

@@ -1,0 +1,35 @@
+.bodyLogin {
+  width: 100%;
+  height: 100vh;
+  background-color: #121214;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  margin: 40px auto;
+  width: 100%;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+.btnLogin {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  background-color: #8357e5;
+  border: #8357e5;
+  color: white;
+  width: 100px;
+}
+
+.btn:hover {
+  background-color: #6f42c1;
+  border: #6f42c1;
+}

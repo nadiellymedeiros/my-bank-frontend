@@ -1,0 +1,33 @@
+<table>
+  <thead>
+    <tr>
+      <th>Código do usuário</th>
+      <th>Nome usuário</th>
+      <th>UserName</th>
+      <th>E-mail</th>
+      <th>Senha</th>
+      <th>Telefone</th>
+      <th>Instituição</th>
+      <th>Agência</th>
+      <th>Conta Corrente</th>
+      <th>Banco</th>
+      <th>Montante</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let u of users">
+      <td>{{ u.id }}</td>
+      <td>{{ u.name }}</td>
+      <td>{{ u.userName }}</td>
+      <td>{{ u.email }}</td>
+      <td>{{ u.password }}</td>
+      <td>{{ u.phone }}</td>
+      <td>{{ u.institution }}</td>
+      <td>{{ u.agency }}</td>
+      <td>{{ u.currentAccount }}</td>
+      <td>{{ u.bank }}</td>
+      <td>{{ u.amount }}</td>
+    </tr>
+  </tbody>
+</table>
