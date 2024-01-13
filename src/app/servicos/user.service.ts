@@ -12,7 +12,10 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   // URLs
-  private urlUser: string = 'http://localhost:5000/userData';
+  // private urlUser: string = 'http://localhost:5000/userData';
+
+  private urlUser: string =
+    'https://my-bank-backend-jsonserver.vercel.app/userData';
 
   // Propriedade para armazenar o ID do usuário logado
   private loggedInUserId?: number;
