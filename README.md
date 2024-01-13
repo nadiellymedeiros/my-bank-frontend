@@ -2,7 +2,7 @@
 
 <p align="center">Projeto de um banco em aplicação web utilizando Angular. Para o backend eu utilizei o json-server.</p>
 
-<p align="center">deploy: </p>
+<p align="center">deploy: https://my-bank-frontend-pearl.vercel.app/login</p>
 
 # Sumário
 
@@ -23,6 +23,8 @@ Em cada página tem uma outra navbar onde o usuário pode voltar para home ou sa
 
 - [x] Navbar da home
 - [x] Navbar das páginas
+- [x] Tela de Login
+- [x] Tela de senha  
 - [x] Conta
 - [x] Histórico com busca
 - [x] Transações
