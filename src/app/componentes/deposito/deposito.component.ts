@@ -67,8 +67,9 @@ export class DepositoComponent {
         let currentAmount: number = amount + valorDeposito;
         if (currentAmount > 0) {
           this.amount = currentAmount;
-
           this.currentAmount();
+          // Atualizar o serviço com o novo valor do saldo
+          // this.userService.updateAmount(this.amount);
         } else {
           return;
         }

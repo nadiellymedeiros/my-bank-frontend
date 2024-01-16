@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../servicos/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -19,9 +20,14 @@ export class NavbarComponent {
   amount?: number;
   id?: string;
 
-  constructor(private rota: Router) {}
+  constructor(private rota: Router, private userService: UserService) {}
 
   ngOnInit() {
+    // this.userService.getAmount().subscribe((amount) => {
+    //    Atualize o valor do saldo quando houver uma mudança
+    //   this.amount = amount;
+    // });
+
     const userDataString = localStorage.getItem('userData');
 
     if (userDataString) {

@@ -67,8 +67,10 @@ export class SaqueComponent {
         if (valorSaque <= amount) {
           let currentAmount: number = amount - valorSaque;
           this.amount = currentAmount;
-
           this.currentAmount();
+
+          // Atualizar o serviço com o novo valor do saldo
+          // this.userService.updateAmount(this.amount);
         } else {
           alert(
             'Saldo insuficiente. O valor de saque é maior do que o saldo disponível.'

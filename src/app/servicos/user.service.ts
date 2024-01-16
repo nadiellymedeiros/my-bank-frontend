@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { User } from '../modelos/user';
@@ -11,19 +11,15 @@ import { User } from '../modelos/user';
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  // URLs
   // private urlUser: string = 'http://localhost:5000/userData';
 
   private urlUser: string =
     'https://my-bank-backend-jsonserver.vercel.app/userData';
 
-  // Propriedade para armazenar o ID do usuário logado
   private loggedInUserId?: number;
-
-  // Propriedade para armazenar o usuário logado
   private loggedInUser?: User;
-
   private recipientUser?: User;
+  private amountSubject = new BehaviorSubject<number | undefined>(undefined);
 
   // Método para retornar todas os usuários
   listarUsers(): Observable<User[]> {
@@ -61,6 +57,16 @@ export class UserService {
 
   getLoggedInUser(): User | undefined {
     return this.loggedInUser;
+  }
+
+  // Métodos para lidar com o valor do saldo
+  // updateAmount(user: User): void {
+  //   const amount = user.amount ? parseFloat(user.amount.toString()) : undefined;
+  //   this.amountSubject.next(amount);
+  // }
+
+  getAmount(): Observable<number | undefined> {
+    return this.amountSubject.asObservable();
   }
 
   //verificar se esta sendo usada:

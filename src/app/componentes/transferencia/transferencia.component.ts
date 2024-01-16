@@ -88,6 +88,8 @@ export class TransferenciaComponent {
           this.currentAmount();
           this.recebidoTransferencia();
           this.addHistoryTransfer();
+          // Atualizar o serviço com o novo valor do saldo
+          // this.userService.updateAmount(this.amount);
         } else {
           alert(
             'Valor indisponível. O valor de transferência é maior do que o saldo disponível.'

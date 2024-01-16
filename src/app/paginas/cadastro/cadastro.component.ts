@@ -44,6 +44,7 @@ export class CadastroComponent {
     const email = this.formularioCadastro.get('email')?.value;
     const password = this.formularioCadastro.get('password')?.value;
     const name = this.formularioCadastro.get('name')?.value;
+    const amount = this.formularioCadastro.get('amount')?.value;
 
     const userCadastrado = this.formularioCadastro.value as User;
 
@@ -60,6 +61,7 @@ export class CadastroComponent {
         });
 
       this.rota.navigateByUrl('/home');
+      console.log('typeof:' + typeof amount);
     } else {
       alert('Por favor, preencha todos os campos corretamente.');
     }
