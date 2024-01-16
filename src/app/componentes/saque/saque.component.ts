@@ -104,8 +104,16 @@ export class SaqueComponent {
         const userData = JSON.parse(userDataString);
         userData.amount = this.amount;
 
+        let patchUpdateAmount = [
+          {
+            op: 'replace',
+            path: '/amount',
+            value: this.amount,
+          },
+        ];
+
         this.userService
-          .atualizarUsuario(userData.id.toString(), { amount: this.amount })
+          .atualizarUsuario(userData.id.toString(), patchUpdateAmount)
           .subscribe((updatedUser) => {
             localStorage.setItem('userData', JSON.stringify(updatedUser));
           });
