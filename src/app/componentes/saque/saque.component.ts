@@ -111,6 +111,7 @@ export class SaqueComponent {
             value: this.amount,
           },
         ];
+        console.log(patchUpdateAmount);
 
         this.userService
           .atualizarUsuario(userData.id.toString(), patchUpdateAmount)
