@@ -23,7 +23,7 @@ export class SaqueComponent {
   currentAccount?: string;
   bank?: string;
   amount?: number;
-  id?: string;
+  id: number = 0;
 
   constructor(
     private rota: Router,
@@ -59,6 +59,7 @@ export class SaqueComponent {
     const valorSaqueString: string | null | undefined =
       this.formularioSaque.get('valorSaque')?.value;
     const amount: number = Number(this.amount);
+    const userId = this.id;
 
     if (valorSaqueString !== null && valorSaqueString !== undefined) {
       const valorSaque: number = parseFloat(valorSaqueString);
@@ -67,10 +68,16 @@ export class SaqueComponent {
         if (valorSaque <= amount) {
           let currentAmount: number = amount - valorSaque;
           this.amount = currentAmount;
-          this.currentAmount();
+
+          // this.currentAmount();
 
           // Atualizar o serviço com o novo valor do saldo
-          // this.userService.updateAmount(this.amount);
+          this.userService
+            .updateAmount(this.amount, userId)
+            .subscribe({
+              next: (res) => console.log(res),
+              error: (err) => console.log(err),
+            });
         } else {
           alert(
             'Saldo insuficiente. O valor de saque é maior do que o saldo disponível.'
@@ -104,17 +111,8 @@ export class SaqueComponent {
         const userData = JSON.parse(userDataString);
         userData.amount = this.amount;
 
-        let patchUpdateAmount = [
-          {
-            op: 'replace',
-            path: '/amount',
-            value: this.amount,
-          },
-        ];
-        console.log(patchUpdateAmount);
-
         this.userService
-          .atualizarUsuario(userData.id.toString(), patchUpdateAmount)
+          .atualizarUsuario(userData.id.toString(), { amount: this.amount })
           .subscribe((updatedUser) => {
             localStorage.setItem('userData', JSON.stringify(updatedUser));
           });

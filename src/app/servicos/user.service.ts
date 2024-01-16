@@ -60,9 +60,24 @@ export class UserService {
   }
 
   // Métodos para lidar com o valor do saldo
-  // updateAmount(user: User): void {
-  //   const amount = user.amount ? parseFloat(user.amount.toString()) : undefined;
-  //   this.amountSubject.next(amount);
+  updateAmount(amount: Number, userId: Number): Observable<any> {
+    let patchUpdateAmount = [
+      {
+        op: 'replace',
+        path: '/amount',
+        value: amount,
+      },
+    ];
+    console.log(patchUpdateAmount);
+    return this.http.patch<any>(`${this.urlUser}/${userId}`, patchUpdateAmount);
+
+    // const amount = user.amount ? parseFloat(user.amount.toString()) : undefined;
+    // this.amountSubject.next(amount);
+  }
+
+  // atualizarUsuario(id: string, userData: any): Observable<User> {
+  //   const url = `${this.urlUser}/${id}`;
+  //   return this.http.patch<User>(url, userData);
   // }
 
   getAmount(): Observable<number | undefined> {
