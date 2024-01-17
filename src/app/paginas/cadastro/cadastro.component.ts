@@ -61,11 +61,14 @@ export class CadastroComponent {
         });
 
       this.rota.navigateByUrl('/home');
-      console.log('typeof:' + typeof amount);
     } else {
       alert('Por favor, preencha todos os campos corretamente.');
     }
 
     localStorage.setItem('userData', JSON.stringify(userCadastrado));
+  }
+
+  rotaLogin() {
+    this.rota.navigateByUrl('/login');
   }
 }

@@ -2,6 +2,9 @@
   height: 100vh;
 }
 
+.transictions {
+}
+
 .transiction {
   margin-top: 2rem;
   border-bottom: 1px solid #8a9197;
@@ -30,16 +33,20 @@
 
 .input-group-prepend span {
   background-color: #2d2e2f;
-  border-color: #2d2e2f;
+  border-color: #8a9197;
 }
 
 input {
   background-color: #2d2e2f;
-  border-color: #2d2e2f;
+  border-color: #8a9197;
   color: white;
 }
 
 input:focus {
   background-color: #2d2e2f;
   color: white !important;
+}
+
+input::placeholder {
+  color: #a9a9a9;
 }

@@ -24,7 +24,7 @@ export class NavbarComponent {
 
   ngOnInit() {
     // this.userService.getAmount().subscribe((amount) => {
-    //    Atualize o valor do saldo quando houver uma mudança
+    //   Atualize o valor do saldo quando houver uma mudança
     //   this.amount = amount;
     // });
 

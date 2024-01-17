@@ -11,10 +11,10 @@ import { User } from '../modelos/user';
 export class UserService {
   constructor(private http: HttpClient) {}
 
-  // private urlUser: string = 'http://localhost:5000/userData';
+  private urlUser: string = 'http://localhost:5000/userData';
 
-  private urlUser: string =
-    'https://my-bank-backend-jsonserver.vercel.app/userData';
+  // private urlUser: string =
+  //   'https://my-bank-backend-jsonserver.vercel.app/userData';
 
   private loggedInUserId?: number;
   private loggedInUser?: User;
@@ -59,15 +59,32 @@ export class UserService {
     return this.loggedInUser;
   }
 
-  // Métodos para lidar com o valor do saldo
-  updateAmount(amountUpdate: Number, userId: Number): Observable<any> {
-    return this.http.patch<any>(`${this.urlUser}/${userId}`, {
-      amount: amountUpdate,
-    });
-
-    // const amount = user.amount ? parseFloat(user.amount.toString()) : undefined;
-    // this.amountSubject.next(amount);
+  updateAmount(userId: number, amountUpdate: number): Observable<User> {
+    const url = `${this.urlUser}/${userId}`;
+    return this.http.patch<User>(url, { amount: amountUpdate }).pipe(
+      map((updatedUser) => {
+        this.amountSubject.next(updatedUser.amount);
+        return updatedUser;
+      })
+    );
   }
+
+  // updateAmount(amountUpdate: number, userId: number): Observable<User> {
+  //   const url = `${this.urlUser}/${userId}`;
+  //   return this.http.patch<User>(url, { amount: amountUpdate });
+  // }
+
+  // Métodos para lidar com o valor do saldo
+  // updateAmount(amountUpdate: Number, userId: Number): Observable<any> {
+  //   return this.http.patch<any>(`${this.urlUser}/${userId}`, {
+  //     amount: amountUpdate,
+  //   });
+  // }
+
+  // updateAmount(user: User): void {
+  //   const amount = user.amount ? parseFloat(user.amount.toString()) : undefined;
+  //   this.amountSubject.next(amount);
+  // }
 
   // atualizarUsuario(id: string, userData: any): Observable<User> {
   //   const url = `${this.urlUser}/${id}`;

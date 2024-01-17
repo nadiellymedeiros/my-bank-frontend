@@ -1,63 +1,70 @@
-<form [formGroup]="formularioCadastro">
-  <input
-    type="text"
-    formControlName="name"
-    placeholder="Informe seu nome"
-    class="form-control"
-  />
-  <input
-    type="email"
-    formControlName="email"
-    placeholder="Informe seu e-mail"
-    class="form-control"
-  />
-  <input
-    type="password"
-    formControlName="password"
-    placeholder="Informe sua senha"
-    class="form-control"
-  />
+<div class="bodySignUp">
+  <h1>Crie sua conta</h1>
+  <form [formGroup]="formularioCadastro">
+    <input
+      type="text"
+      formControlName="name"
+      placeholder="Informe seu nome"
+      class="form-control"
+    />
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="Informe seu e-mail"
+      class="form-control"
+    />
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Informe sua senha"
+      class="form-control"
+    />
 
-  <input
-    type="text"
-    formControlName="institution"
-    placeholder="Informe seu banco"
-    class="form-control"
-  />
-  <input
-    type="text"
-    formControlName="agency"
-    placeholder="Informe sua agência"
-    class="form-control"
-  />
-  <input
-    type="text"
-    formControlName="currentAccount"
-    placeholder="Informe sua conta corrente"
-    class="form-control"
-  />
-  <input
-    type="text"
-    formControlName="bank"
-    placeholder="Informe o número do seu banco"
-    class="form-control"
-  />
+    <input
+      type="text"
+      formControlName="institution"
+      placeholder="Informe seu banco"
+      class="form-control"
+    />
+    <input
+      type="text"
+      formControlName="agency"
+      placeholder="Informe sua agência"
+      class="form-control"
+    />
+    <input
+      type="text"
+      formControlName="currentAccount"
+      placeholder="Informe sua conta corrente"
+      class="form-control"
+    />
+    <input
+      type="text"
+      formControlName="bank"
+      placeholder="Informe o número do seu banco"
+      class="form-control"
+    />
 
-  <input
-    type="number"
-    formControlName="amount"
-    placeholder="Informe seu montante"
-    class="form-control"
-  />
-
-  <input
-    type="submit"
-    value="Criar Conta"
-    class="btn btn-primary"
-    [disabled]="formularioCadastro.invalid"
-    (click)="criarConta()"
-  />
-</form>
+    <input
+      type="number"
+      formControlName="amount"
+      placeholder="Informe seu montante"
+      class="form-control"
+    />
+    <div class="btnsSignUp">
+      <!-- <input
+      type="submit"
+      value="Criar Conta"
+      class="btn"
+      (click)="criarConta()"
+    /> -->
+      <button class="btn" type="submit" (click)="criarConta()">
+        Criar Conta
+      </button>
+      <button class="btn" (click)="rotaLogin()">Voltar</button>
+    </div>
+  </form>
+</div>
 
 <!-- desabilita o botão so ativa qdo tudo estiver preenchido como o validators -->
 <!-- [disabled]="formularioCadastro.invalid" -->

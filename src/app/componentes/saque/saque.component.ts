@@ -74,9 +74,8 @@ export class SaqueComponent {
           // Atualizar o serviço com o novo valor do saldo
           this.userService
             .updateAmount(this.amount, userId)
-            .subscribe({
-              next: (res) => console.log(res),
-              error: (err) => console.log(err),
+            .subscribe((updatedUser) => {
+              localStorage.setItem('userData', JSON.stringify(updatedUser));
             });
         } else {
           alert(
