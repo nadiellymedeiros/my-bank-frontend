@@ -124,6 +124,6 @@ export class HomeComponent implements OnInit {
 
   rotaAccount(user: any): void {
     // this.rota.navigateByUrl('/account');
-    this.rota.navigate(['myCards'], { state: user });
+    this.rota.navigate(['account'], { state: user });
   }
 }

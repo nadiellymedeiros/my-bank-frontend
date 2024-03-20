@@ -20,48 +20,25 @@
   <div class="transictions">
     <div *ngIf="historys.length > 0; else noHistory">
       <div *ngFor="let transaction of historys | filter : searchText">
-        <div *ngIf="transaction.idDonorUser === idLoggedInUser">
-          <div *ngIf="idLoggedInUser === transaction.idDonorUser">
-            <div *ngIf="transaction.type === 'transfer'" class="transiction">
-              <p class="titleTransiction redTransiction">
-                Transferência enviada
-              </p>
-              <span class="contenttransactions">
-                {{ transaction.amount | currency }} para
-                {{ transaction.nameRecipientUser }} no dia
-                {{ transaction.date }}
-              </span>
-            </div>
-          </div>
-          <div *ngIf="transaction.type === 'deposit'" class="transiction">
-            <p class="titleTransiction greenTransiction">Depósito</p>
-            <span class="contenttransactions">
-              {{ transaction.amount | currency }} no dia
-              {{ transaction.date }}
-            </span>
-          </div>
-
-          <div *ngIf="transaction.type === 'withdrawal'" class="transiction">
-            <p class="titleTransiction redTransiction">Saque</p>
-            <span class="contenttransactions">
-              {{ transaction.amount | currency }} no dia
-              {{ transaction.date }}
-            </span>
-          </div>
+        <div class="transiction">
+          <p class="titleTransaction">{{ transaction.historico }}</p>
+          <span class="contentTransaction">
+            R{{ transaction.valor | currency }} no dia
+            {{ transaction.criadoEm | date : "dd/MM/yyyy HH:mm:ss" }}
+          </span>
         </div>
 
-        <div *ngIf="transaction.idRecipientUserUser === idLoggedInUser">
-          <div *ngIf="transaction.type === 'transfer'" class="transiction">
-            <p class="titleTransiction greenTransiction">
-              Transferência recebida
-            </p>
-            <span class="contenttransactions">
-              {{ transaction.amount | currency }} de
-              {{ transaction.nameDonorUser }} no dia
-              {{ transaction.date }}
-            </span>
-          </div>
-        </div>
+        <!-- <div
+          *ngIf="transaction.direcaoTransacao === 'SAIDA'"
+          class="transaction exit"
+        >
+          <p class="titleTransaction">{{ transaction.historico }}</p>
+          <span class="contentTransaction">
+            Enviado: R{{ transaction.valor | currency }} no dia
+            {{ transaction.criadoEm | date : "dd/MM/yyyy HH:mm:ss" }}
+            {{ transaction.historico }}
+          </span>
+        </div> -->
       </div>
     </div>
     <ng-template #noHistory>
@@ -69,3 +46,57 @@
     </ng-template>
   </div>
 </div>
+
+<!-- ---------------
+<div class="transictions">
+  <div *ngIf="historys.length > 0; else noHistory">
+    <div *ngFor="let transaction of historys | filter : searchText">
+      <div *ngIf="transaction.idDonorUser === idLoggedInUser">
+        <div *ngIf="idLoggedInUser === transaction.idDonorUser">
+          <div *ngIf="transaction.type === 'transfer'" class="transiction">
+            <p class="titleTransiction redTransiction">
+              Transferência enviada
+            </p>
+            <span class="contenttransactions">
+              {{ transaction.amount | currency }} para
+              {{ transaction.nameRecipientUser }} no dia
+              {{ transaction.date }}
+            </span>
+          </div>
+        </div>
+        <div *ngIf="transaction.type === 'deposit'" class="transiction">
+          <p class="titleTransiction greenTransiction">Depósito</p>
+          <span class="contenttransactions">
+            {{ transaction.amount | currency }} no dia
+            {{ transaction.date }}
+          </span>
+        </div>
+
+        <div *ngIf="transaction.type === 'withdrawal'" class="transiction">
+          <p class="titleTransiction redTransiction">Saque</p>
+          <span class="contenttransactions">
+            {{ transaction.amount | currency }} no dia
+            {{ transaction.date }}
+          </span>
+        </div>
+      </div>
+
+      <div *ngIf="transaction.idRecipientUserUser === idLoggedInUser">
+        <div *ngIf="transaction.type === 'transfer'" class="transiction">
+          <p class="titleTransiction greenTransiction">
+            Transferência recebida
+          </p>
+          <span class="contenttransactions">
+            {{ transaction.amount | currency }} de
+            {{ transaction.nameDonorUser }} no dia
+            {{ transaction.date }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noHistory>
+    <p>No transaction history available.</p>
+  </ng-template>
+</div>
+</div> -->

@@ -10,6 +10,10 @@
   border-bottom: 1px solid #8a9197;
 }
 
+.transiction p {
+  margin: 0;
+}
+
 .titleTransiction {
   font-size: 20px;
   margin: 0.5rem;

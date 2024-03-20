@@ -4,7 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../servicos/user.service';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { HistoryService } from '../../servicos/history.service';
+import { HistoryService } from '../../servicos/historyService/history.service';
 import { History } from '../../modelos/history';
 
 @Component({

@@ -31,9 +31,4 @@ export class UserService {
     const url = `${this.urlUser}/${id}`;
     return this.http.patch<User>(url, user);
   }
-
-  updateIsLogado(id: number, isLogado: boolean): Observable<User> {
-    const url = `${this.urlUser}/${id}`;
-    return this.http.patch<User>(url, { IsLogado: isLogado });
-  }
 }

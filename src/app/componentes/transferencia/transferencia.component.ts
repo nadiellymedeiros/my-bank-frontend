@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { UserService } from '../../servicos/user.service';
-import { HistoryService } from '../../servicos/history.service';
+import { HistoryService } from '../../servicos/historyService/history.service';
 import { Router } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { User } from '../../modelos/user';
