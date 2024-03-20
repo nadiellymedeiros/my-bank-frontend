@@ -12,5 +12,5 @@ export class User {
   AtualizadoEm?: Date;
   DeletadoEm?: Date;
   NumeroConta?: string;
-  Agencia?: number = 202;
+  Agencia?: number;
 }

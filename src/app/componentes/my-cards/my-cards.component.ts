@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
+import { UserService } from '../../servicos/user.service';
 
 @Component({
   selector: 'app-my-cards',
@@ -9,31 +10,25 @@ import { NavbarComponent } from '../navbar/navbar.component';
   styleUrl: './my-cards.component.css',
 })
 export class MyCardsComponent {
-  name?: string;
-  email?: string;
-  password?: string;
-  institution?: string;
-  agency?: string;
-  currentAccount?: string;
-  bank?: string;
-  amount?: number;
-  id?: string;
+  Name?: string;
+  NumeroConta?: string;
+  Agencia?: number;
+  user: any;
+  userAutenticado: any;
+
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
-    const userDataString = localStorage.getItem('userData');
+    this.userService.listarUsers().subscribe((users) => {
+      this.userAutenticado = users.find((user) => user.isLogado === true);
 
-    if (userDataString) {
-      const userData = JSON.parse(userDataString);
-      this.name = userData.name;
-      this.amount = userData.amount;
-      this.email = userData.email;
-      this.password = userData.password;
-      this.institution = userData.institution;
-      this.agency = userData.agency;
-      this.currentAccount = userData.currentAccount;
-      this.bank = userData.bank;
-      this.amount = userData.amount;
-      this.id = userData.id;
-    }
+      console.log('meu cartão');
+
+      if (this.userAutenticado) {
+        this.Name = this.userAutenticado.name;
+        this.NumeroConta = this.userAutenticado.numeroConta;
+        this.Agencia = this.userAutenticado.agencia;
+      }
+    });
   }
 }

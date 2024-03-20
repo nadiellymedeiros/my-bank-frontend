@@ -15,13 +15,10 @@ import { UserService } from '../../servicos/user.service';
 export class ProfileComponent {
   name?: string;
   email?: string;
-  password?: string;
-  institution?: string;
-  agency?: string;
-  currentAccount?: string;
-  bank?: string;
-  amount?: number;
-  id?: string;
+  senha?: string;
+
+  user: any;
+  userAutenticado: any;
 
   constructor(private rota: Router, private userService: UserService) {}
 
@@ -34,21 +31,17 @@ export class ProfileComponent {
   });
 
   ngOnInit() {
-    const userDataString = localStorage.getItem('userData');
+    this.userService.listarUsers().subscribe((users) => {
+      this.userAutenticado = users.find((user) => user.isLogado === true);
 
-    if (userDataString) {
-      const userData = JSON.parse(userDataString);
-      this.name = userData.name;
-      this.amount = userData.amount;
-      this.email = userData.email;
-      this.password = userData.password;
-      this.institution = userData.institution;
-      this.agency = userData.agency;
-      this.currentAccount = userData.currentAccount;
-      this.bank = userData.bank;
-      this.amount = userData.amount;
-      this.id = userData.id;
-    }
+      console.log('meu cartão');
+
+      if (this.userAutenticado) {
+        this.name = this.userAutenticado.name;
+        this.email = this.userAutenticado.email;
+        this.senha = this.userAutenticado.password;
+      }
+    });
   }
 
   showEditUserProfile(): void {
