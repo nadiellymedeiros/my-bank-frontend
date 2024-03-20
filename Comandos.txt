@@ -12,6 +12,9 @@ CRIAR UM COMPONENTE: ng g c componentes/user
 
 CRIAR UM SERVIÇO: ng g s servicos/user
 
+CRIAR um segurança: ng g guard seguranca/autenticar
+da enter na pergunta (CanActivate)
+
 vai no arquivo app.config e add o provideHttpClient(withFetch()) para liberar as reuisições para API
 
 no arquivo user.services.ts add construtor private http:HttpClient

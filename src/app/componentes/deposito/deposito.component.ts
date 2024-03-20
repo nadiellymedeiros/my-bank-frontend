@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { HistoryService } from '../../servicos/history.service';
 import { History } from '../../modelos/history';
+import { User } from '../../modelos/user';
 
 @Component({
   selector: 'app-deposito',
@@ -15,21 +16,15 @@ import { History } from '../../modelos/history';
   styleUrl: './deposito.component.css',
 })
 export class DepositoComponent {
-  name?: string;
-  email?: string;
-  password?: string;
-  institution?: string;
-  agency?: string;
-  currentAccount?: string;
-  bank?: string;
-  amount?: number;
-  id?: string;
+  user: any;
 
   constructor(
     private rota: Router,
     private userService: UserService,
     private historyService: HistoryService
-  ) {}
+  ) {
+    this.user = this.rota.getCurrentNavigation()?.extras.state;
+  }
 
   formularioDeposito = new FormGroup({
     valorDeposito: new FormControl(''),
@@ -38,87 +33,94 @@ export class DepositoComponent {
   historys: History[] = [];
 
   ngOnInit() {
-    const userDataString = localStorage.getItem('userData');
-
-    if (userDataString) {
-      const userData = JSON.parse(userDataString);
-      this.name = userData.name;
-      this.amount = userData.amount;
-      this.email = userData.email;
-      this.password = userData.password;
-      this.institution = userData.institution;
-      this.agency = userData.agency;
-      this.currentAccount = userData.currentAccount;
-      this.bank = userData.bank;
-      this.amount = userData.amount;
-      this.id = userData.id;
-    }
+    // const userLogado = this.rota.getCurrentNavigation()?.extras.state?.['Id'];
+    // if (userLogado) {
+    //   this.userService.getUser(userLogado).subscribe((user) => {
+    //     this.user = user;
+    //   });
+    // }
   }
 
-  deposito(): any {
-    const valorDepositoString: string | null | undefined =
-      this.formularioDeposito.get('valorDeposito')?.value;
-    const amount: number = Number(this.amount);
+  deposito(): void {
+    const valorDepositoString =
+      this.formularioDeposito.get('valorDeposito')?.value ?? '';
+    const valorDeposito = parseFloat(valorDepositoString);
 
-    if (valorDepositoString !== null && valorDepositoString !== undefined) {
-      const valorDeposito: number = parseFloat(valorDepositoString);
-
-      if (!isNaN(valorDeposito) && !isNaN(amount)) {
-        let currentAmount: number = amount + valorDeposito;
-        if (currentAmount > 0) {
-          this.amount = currentAmount;
-          this.currentAmount();
-          // Atualizar o serviço com o novo valor do saldo
-          // this.userService.updateAmount(this.amount);
-        } else {
-          return;
-        }
-      } else {
-        alert('Valor de depósito ou quantidade atual não é um número válido.');
-      }
+    if (!isNaN(valorDeposito) && this.user) {
+      const novoSaldo = this.user.Saldo + valorDeposito;
+      this.userService
+        .atualizarUsuario(this.user.Id!.toString(), { saldo: novoSaldo })
+        .subscribe(() => {
+          this.user!.Saldo = novoSaldo;
+          this.formularioDeposito.reset();
+        });
     } else {
-      alert(
-        "Controle 'valorDeposito' não encontrado ou é null/undefined no formulário."
-      );
-    }
-
-    this.formularioDeposito.reset();
-  }
-
-  currentAmount(): void {
-    const userDataString = localStorage.getItem('userData');
-    const dataTransferencia = new Date().toLocaleDateString();
-    const valorDepositoString: string | null | undefined =
-      this.formularioDeposito.get('valorDeposito')?.value;
-
-    if (valorDepositoString !== null && valorDepositoString !== undefined) {
-      const valorDeposito: number = parseFloat(valorDepositoString);
-
-      if (userDataString) {
-        const userData = JSON.parse(userDataString);
-        userData.amount = this.amount;
-
-        this.userService
-          .atualizarUsuario(userData.id.toString(), { amount: this.amount })
-          .subscribe((updatedUser) => {
-            localStorage.setItem('userData', JSON.stringify(updatedUser));
-          });
-        this.historyService
-          .addHistory({
-            idDonorUser: userData.id,
-            nameDonorUser: userData.name,
-            idRecipientUserUser: userData.id,
-            nameRecipientUser: userData.name,
-            type: 'deposit',
-            amount: valorDeposito,
-            date: dataTransferencia,
-          })
-          .subscribe((history) => {
-            this.historys.push(history);
-          });
-      }
+      alert('Por favor, insira um valor válido.');
     }
   }
+
+  // deposito(): void {
+  //   const valorDepositoString: string | null | undefined =
+  //     this.formularioDeposito.get('valorDeposito')?.value;
+  //   const amount: number = Number(this.Saldo);
+
+  //   if (valorDepositoString !== null && valorDepositoString !== undefined) {
+  //     const valorDeposito: number = parseFloat(valorDepositoString);
+
+  //     if (!isNaN(valorDeposito) && !isNaN(amount)) {
+  //       let currentAmount: number = amount + valorDeposito;
+  //       if (currentAmount > 0) {
+  //         this.Saldo = currentAmount;
+  //         this.currentAmount();
+  //       } else {
+  //         return;
+  //       }
+  //     } else {
+  //       alert('Valor de depósito ou quantidade atual não é um número válido.');
+  //     }
+  //   } else {
+  //     alert(
+  //       "Controle 'valorDeposito' não encontrado ou é null/undefined no formulário."
+  //     );
+  //   }
+
+  //   this.formularioDeposito.reset();
+  // }
+
+  // currentAmount(): void {
+  //   const userDataString = localStorage.getItem('userData');
+  //   const dataTransferencia = new Date().toLocaleDateString();
+  //   const valorDepositoString: string | null | undefined =
+  //     this.formularioDeposito.get('valorDeposito')?.value;
+
+  //   if (valorDepositoString !== null && valorDepositoString !== undefined) {
+  //     const valorDeposito: number = parseFloat(valorDepositoString);
+
+  //     if (userDataString) {
+  //       const userData = JSON.parse(userDataString);
+  //       userData.amount = this.Saldo;
+
+  //       this.userService
+  //         .atualizarUsuario(userData.id.toString(), { amount: this.Saldo })
+  //         .subscribe((updatedUser) => {
+  //           localStorage.setItem('userData', JSON.stringify(updatedUser));
+  //         });
+  //       this.historyService
+  //         .addHistory({
+  //           idDonorUser: userData.id,
+  //           nameDonorUser: userData.name,
+  //           idRecipientUserUser: userData.id,
+  //           nameRecipientUser: userData.name,
+  //           type: 'deposit',
+  //           amount: valorDeposito,
+  //           date: dataTransferencia,
+  //         })
+  //         .subscribe((history) => {
+  //           this.historys.push(history);
+  //         });
+  //     }
+  //   }
+  // }
 
   sair(): void {
     this.rota.navigateByUrl('/home');

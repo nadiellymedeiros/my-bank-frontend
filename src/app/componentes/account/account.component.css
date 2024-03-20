@@ -1,6 +1,7 @@
 .bodyAccount {
   width: 100%;
-  height: 100vh;
+  height: 10000px;
+  /* arrumar o height */
 
   /* height: calc(100vh-4rem); */
   background-color: #121214;
@@ -12,13 +13,9 @@
 
 .contentAccount {
   width: 80%;
-  height: auto;
+  /* height: 500%; */
   display: flex;
   align-items: center;
   flex-direction: column;
   padding-top: 2rem;
-}
-
-.transictions {
-  /* height: 100vh; */
 }

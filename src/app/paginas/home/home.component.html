@@ -1,9 +1,9 @@
 <nav class="navbar navbarHome">
   <div class="contentNavHome d-flex justify-content-around">
-    <button class="btn usuarioTag btnNavHome" (click)="rotaProfile()">
+    <button class="btn usuarioTag btnNavHome" (click)="rotaProfile(user)">
       <i class="bi bi-person-fill"></i>
     </button>
-    <p>Bem-vindo, {{ name }}!</p>
+    <p>Bem-vindo, {{ Name }}!</p>
 
     <button class="btn btnNavHome" (click)="sair()">
       <i class="bi bi-box-arrow-right"></i>
@@ -16,10 +16,10 @@
     <div class="bodyAccount">
       <div class="contentAccount">
         <p>Conta:</p>
-        <p>R$ {{ amount }}</p>
+        <p>R$ {{ Saldo }}</p>
       </div>
       <div>
-        <button class="go" (click)="rotaAccount()">
+        <button class="go" (click)="rotaAccount(user)">
           <i class="bi bi-caret-right-fill"></i>
         </button>
       </div>
@@ -27,7 +27,7 @@
 
     <div class="contentTransaction">
       <div class="transaction">
-        <button class="btnTransaction btn" (click)="rotaSaque()">
+        <button class="btnTransaction btn" (click)="rotaSaque(user)">
           <div class="btnIconsWithdrawal">
             <i class="bi bi-arrow-bar-up"></i>
             <i class="bi bi-cash"></i>
@@ -38,14 +38,14 @@
       </div>
 
       <div class="transaction">
-        <button class="btnTransaction btn" (click)="rotaDeposito()">
+        <button class="btnTransaction btn" (click)="rotaDeposito(user)">
           <i class="bi bi-cash-coin"></i>
         </button>
         <p>Depósito</p>
       </div>
 
       <div class="transaction">
-        <button class="btnTransaction btn" (click)="rotaTransferencia()">
+        <button class="btnTransaction btn" (click)="rotaTransferencia(user)">
           <div class="btnIconsTranfer">
             <i class="bi bi-arrow-down-up"></i>
             <i class="bi bi-cash"></i>
@@ -56,7 +56,7 @@
     </div>
 
     <div class="myCards">
-      <button (click)="rotaMyCards()">
+      <button (click)="rotaMyCards(user)">
         <i class="bi bi-credit-card"></i>
         Meus Cartões
       </button>

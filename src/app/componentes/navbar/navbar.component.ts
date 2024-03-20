@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../servicos/user.service';
+import { LoginService } from '../../servicos/login/login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -10,44 +11,57 @@ import { UserService } from '../../servicos/user.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent {
-  name?: string;
-  email?: string;
-  password?: string;
-  institution?: string;
-  agency?: string;
-  currentAccount?: string;
-  bank?: string;
-  amount?: number;
-  id?: string;
+  Id?: string;
+  Email?: string;
+  Name?: string;
+  Password?: string;
+  Cpf?: string;
+  Telefone?: string;
+  Saldo?: number;
+  IsLogado?: boolean;
+  IsActive?: boolean;
+  CriadoEm?: Date;
+  AtualizadoEm?: Date;
+  DeletadoEm?: Date;
+  NumeroConta?: string;
+  Agencia?: number;
 
-  constructor(private rota: Router, private userService: UserService) {}
+  userAutenticado: any;
+
+  user: any;
+
+  constructor(
+    private rota: Router,
+    private userService: UserService,
+    private loginService: LoginService
+  ) {
+    this.userService.listarUsers().subscribe((users) => {
+      this.userAutenticado = users.find((user) => user.isLogado === true);
+
+      if (this.userAutenticado) {
+        this.Name = this.userAutenticado.name;
+        this.Saldo = this.userAutenticado.saldo;
+        this.Id = this.userAutenticado.id;
+      }
+    });
+  }
 
   ngOnInit() {
-    // this.userService.getAmount().subscribe((amount) => {
-    //   Atualize o valor do saldo quando houver uma mudança
-    //   this.amount = amount;
-    // });
-
-    const userDataString = localStorage.getItem('userData');
-
-    if (userDataString) {
-      const userData = JSON.parse(userDataString);
-      this.name = userData.name;
-      this.amount = userData.amount;
-      this.email = userData.email;
-      this.password = userData.password;
-      this.institution = userData.institution;
-      this.agency = userData.agency;
-      this.currentAccount = userData.currentAccount;
-      this.bank = userData.bank;
-      this.amount = userData.amount;
-      this.id = userData.id;
-    }
+    this.Name = this.user.name;
+    this.Saldo = this.user.saldo;
+    this.Email = this.user.email;
+    this.Password = this.user.password;
+    this.Id = this.user.id;
   }
 
   sair(): void {
-    localStorage.clear();
-    this.rota.navigateByUrl('/login');
+    if (this.Id) {
+      this.loginService.logout(parseInt(this.Id)).subscribe(() => {
+        this.rota.navigateByUrl('/login');
+      });
+    } else {
+      console.error('ID do usuário não definido ao tentar fazer logout.');
+    }
   }
 
   voltar(): void {

@@ -13,7 +13,10 @@ import { AccountComponent } from './componentes/account/account.component';
 export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent },
-  { path: 'home', component: HomeComponent, canActivate: [autenticarGuard] },
+  {
+    path: 'home',
+    component: HomeComponent /*, canActivate: [autenticarGuard]*/,
+  },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'deposito', component: DepositoComponent },
   { path: 'transferencia', component: TransferenciaComponent },

@@ -10,7 +10,7 @@ import { User } from '../modelos/user';
 })
 export class HistoryService {
   // URLs
-  private urlHistoryData: string = 'http://localhost:5000/history';
+  private urlHistoryData: string = 'http://localhost:5292/transacoes';
 
   // private urlHistoryData: string =
   //   'https://my-bank-backend-jsonserver.vercel.app/history';
@@ -42,7 +42,7 @@ export class HistoryService {
   }
 
   setLoggedInUser(user: User): void {
-    this.nameRecipientUser = user.name;
+    this.nameRecipientUser = user.Name;
   }
 
   getLoggedInUserId(): number | undefined {

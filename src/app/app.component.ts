@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { User } from './modelos/user';
 
 @Component({
   selector: 'app-root',

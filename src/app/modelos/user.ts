@@ -1,13 +1,16 @@
 export class User {
-  id?: number;
-  name?: string;
-  userName?: string;
-  email?: string;
-  password?: string;
-  phone?: number;
-  institution?: string;
-  agency?: string;
-  currentAccount?: string;
-  bank?: number;
-  amount?: number;
+  Id?: number;
+  Email?: string;
+  Name?: string;
+  Password?: string;
+  Cpf?: string;
+  Telefone?: string;
+  Saldo: number = 5000.0;
+  IsLogado: boolean = false;
+  IsActive: boolean = true;
+  CriadoEm?: Date;
+  AtualizadoEm?: Date;
+  DeletadoEm?: Date;
+  NumeroConta?: string;
+  Agencia?: number = 202;
 }
