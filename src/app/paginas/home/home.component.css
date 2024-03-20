@@ -28,8 +28,8 @@ i {
 }
 
 .btn {
-  background-color: #8357e5;
-  border: #8357e5;
+  background-color: #f86e02;
+  border: #f86e02;
   color: white;
 }
 
@@ -104,7 +104,7 @@ i {
 }
 
 .go {
-  background-color: #8357e5;
+  background-color: #f86e02;
   border: none;
   color: white;
   width: 40px;
@@ -141,8 +141,8 @@ i {
 .myCards button {
   width: 100%;
   height: 4rem;
-  background-color: #8357e5;
-  border-color: #8357e5;
+  background-color: #f86e02;
+  border-color: #f86e02;
   border-radius: 5px;
   color: white;
 }
