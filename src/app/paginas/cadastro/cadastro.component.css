@@ -47,8 +47,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .btn:hover {
-  background-color: #6f42c1;
-  border: #6f42c1;
+  background-color: #fe5536;
+  border: #fe5536;
 }
 
 .btnsSignUp {
