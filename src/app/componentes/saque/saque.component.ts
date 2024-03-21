@@ -6,6 +6,7 @@ import { UserService } from '../../servicos/user.service';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { HistoryService } from '../../servicos/historyService/history.service';
 import { History } from '../../modelos/history';
+import { TransacoesServiceService } from '../../servicos/transacoesService/transacoes-service.service';
 
 @Component({
   selector: 'app-saque',
@@ -15,36 +16,48 @@ import { History } from '../../modelos/history';
   styleUrl: './saque.component.css',
 })
 export class SaqueComponent {
-  name?: string;
-  email?: string;
-  password?: string;
-  institution?: string;
-  agency?: string;
-  currentAccount?: string;
-  bank?: string;
-  amount?: number;
-  id: number = 0;
+  userAutenticado: any;
+  user: any;
 
   constructor(
     private rota: Router,
     private userService: UserService,
-    private historyService: HistoryService
+    private transacoesService: TransacoesServiceService
   ) {}
 
   formularioSaque = new FormGroup({
-    valorSaque: new FormControl(''),
+    valor: new FormControl(''),
   });
 
-  historys: History[] = [];
-
-  ngOnInit() {}
-
-  saque(): any {
-    // Limpar o formulário
-    this.formularioSaque.reset();
+  ngOnInit() {
+    this.userService.listarUsers().subscribe((users) => {
+      this.userAutenticado = users.find((user) => user.isLogado === true);
+    });
   }
 
-  currentAmount(): void {}
+  saque(): void {
+    const valorString = this.formularioSaque.get('valor')?.value;
+    if (valorString === null || valorString === undefined) {
+      console.error('O valor é nulo ou indefinido');
+      return;
+    }
+    const valor = parseFloat(valorString);
+
+    const transacao = {
+      Valor: valor,
+      DirecaoTransacao: 'SAIDA',
+      TipoTransacao: 'SAQUE',
+      UserId: this.userAutenticado.id,
+      NumeroContaDestino: this.userAutenticado.numeroConta,
+      NumeroContaOrigem: this.userAutenticado.numeroConta,
+      Historico: '',
+    };
+
+    this.transacoesService.atualizarTransacoes(transacao).subscribe(() => {
+      // Atualizações necessárias após a transferência ser concluída
+      this.formularioSaque.reset();
+    });
+  }
 
   sair(): void {
     this.rota.navigateByUrl('/home');

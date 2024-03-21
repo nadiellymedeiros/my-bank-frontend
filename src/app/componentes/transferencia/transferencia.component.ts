@@ -5,13 +5,11 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { UserService } from '../../servicos/user.service';
-import { HistoryService } from '../../servicos/historyService/history.service';
-import { Router } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { User } from '../../modelos/user';
-import { History } from '../../modelos/history';
+import { TransacoesServiceService } from '../../servicos/transacoesService/transacoes-service.service';
 
 @Component({
   selector: 'app-transferencia',
@@ -21,42 +19,58 @@ import { History } from '../../modelos/history';
   styleUrl: './transferencia.component.css',
 })
 export class TransferenciaComponent {
-  name?: string;
-  email?: string;
-  password?: string;
-  institution?: string;
-  agency?: string;
-  currentAccount?: string;
-  bank?: string;
-  amount?: number;
-  id: number | undefined;
+  userAutenticado: any;
 
   constructor(
-    private rota: Router,
     private userService: UserService,
-    private historyService: HistoryService
+    private transacoesService: TransacoesServiceService
   ) {}
 
   formularioTransferencia = new FormGroup({
-    valorTransferencia: new FormControl(''),
-    instituicao: new FormControl(''),
-    agencia: new FormControl(''),
-    contaCorrente: new FormControl(''),
+    valor: new FormControl('', Validators.required),
+    numeroContaDestino: new FormControl('', Validators.required),
   });
 
-  historys: History[] = [];
-
-  ngOnInit() {}
-
-  transferencia(): any {}
-
-  currentAmount(): void {}
-
-  recebidoTransferencia(): void {}
-
-  addHistoryTransfer(): void {}
-
-  sair(): void {
-    this.rota.navigateByUrl('/home');
+  ngOnInit() {
+    this.userService.listarUsers().subscribe((users) => {
+      this.userAutenticado = users.find((user) => user.isLogado === true);
+    });
   }
+
+  transferencia(): void {
+    const valorString = this.formularioTransferencia.get('valor')?.value;
+    if (valorString === null || valorString === undefined) {
+      console.error('O valor é nulo ou indefinido');
+      return;
+    }
+
+    const valor = parseFloat(valorString);
+    const numeroContaDestino =
+      this.formularioTransferencia.get('numeroContaDestino')?.value;
+
+    const transacao = {
+      Valor: valor,
+      DirecaoTransacao: 'SAIDA',
+      TipoTransacao: 'TRANSFERENCIA',
+      UserId: this.userAutenticado.id,
+      NumeroContaDestino: numeroContaDestino,
+      NumeroContaOrigem: this.userAutenticado.numeroConta,
+      Historico: '',
+    };
+
+    this.transacoesService.atualizarTransacoes(transacao).subscribe(() => {
+      // Atualizações necessárias após a transferência ser concluída
+      this.formularioTransferencia.reset();
+    });
+  }
+
+  // currentAmount(): void {}
+
+  // recebidoTransferencia(): void {}
+
+  // addHistoryTransfer(): void {}
+
+  // sair(): void {
+  //   this.rota.navigateByUrl('/home');
+  // }
 }

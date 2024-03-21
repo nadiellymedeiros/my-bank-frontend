@@ -110,7 +110,7 @@ export class HomeComponent implements OnInit {
 
   rotaTransferencia(user: any): void {
     // this.rota.navigateByUrl('/transferencia');
-    this.rota.navigate(['deposito'], { state: user });
+    this.rota.navigate(['transferencia'], { state: user });
   }
 
   rotaSaque(user: any): void {
